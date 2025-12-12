@@ -1,0 +1,991 @@
+@font-face {
+    font-family: 'Poppins-Bold';
+    src: url("../../assets/fonts/Poppins-Bold.woff2") format("woff2"), url("../../assets/fonts/Poppins-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins-Black';
+    src: url("../../assets/fonts/Poppins-Black.woff2") format("woff2"), url("../../assets/fonts/Poppins-Black.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins-Medium';
+    src: url("../../assets/fonts/Poppins-Medium.woff2") format("woff2"), url("../../assets/fonts/Poppins-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SilkSerif-LightItalic';
+    src: url("../../assets/fonts/SilkSerif-LightItalic.woff2") format("woff2"), url("../../assets/fonts/SilkSerif-LightItalic.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SilkSerif-Light';
+    src: url("../../assets/fonts/SilkSerif-Light.woff2") format("woff2"), url("../../assets/fonts/SilkSerif-Light.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$phone: "(max-width: 767px)";
+$tablet: "(min-width: 768px) and (max-width: 1024px)";
+$desktop: "(min-width: 1025px)";
+$notphone: "(min-width: 768px)";
+$smalllaptop: "(max-width: 1280px) and (max-height: 800px)";
+$landscape: "(min-width: 768px) and (max-width: 1024px)  and (orientation: landscape)";
+$ipadPro: "only screen and (min-device-width: 1025px)  and (max-device-width: 1366px)  and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1.5)";
+
+$largedesktop: "(min-width: 1600px) and (min-height: 900px)";
+$largesize: 100px;
+$normalsize: 20px;
+$smallsize: 15px;
+$gutter: 30px;
+$headerHeight: 100px;
+$gutterMobile: 10px;
+$maxContentWidth: 1280px;
+$maxPWidth: 500px;
+$orange: #D77D3D;
+$blue: #1B1F45;
+$beige: #F0EFED;
+
+@mixin transition($args...) {
+    -webkit-transition: $args;
+    -moz-transition: $args;
+    -ms-transition: $args;
+    -o-transition: $args;
+    transition: $args;
+}
+
+@mixin transform($transforms) {
+    -moz-transform: $transforms;
+    -o-transform: $transforms;
+    -ms-transform: $transforms;
+    -webkit-transform: $transforms;
+    transform: $transforms;
+}
+
+@mixin filter($filter) {
+    -webkit-filter: $filter;
+    -moz-filter: $filter;
+    -o-filter: $filter;
+    -ms-filter: $filter;
+    filter: $filter;
+}
+
+body {
+    background: white;
+    color: black;
+    font-family: 'Poppins-Medium';
+    font-size: $normalsize;
+    margin: 0;
+    word-break: break-word;
+    padding: 0;
+
+    @media #{$phone} {
+        font-size: 15px;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    p {
+        word-break: break-word !important;
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+    }
+
+    .phone-only {
+        @media #{$desktop} {
+            display: none;
+        }
+    }
+
+    .hidden-phone {
+        @media #{$phone} {
+            display: none;
+        }
+    }
+
+    .button-container {
+        margin: 50px auto;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .button {
+        padding: 10px 30px;
+        font-family: 'SilkSerif-LightItalic';
+        border: solid 1px $orange;
+        border-radius: 30px;
+        font-size: 25px;
+        cursor: pointer;
+
+        @include transition(all ease-out 0.6s);
+
+        @media #{$phone} {
+            font-size: 20px;
+        }
+
+        &:hover {
+            background: $orange;
+            color: black;
+        }
+    }
+
+    a.nodelink {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 10;
+    }
+
+    header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        z-index: 10;
+        height: $headerHeight;
+
+        img {
+            height: auto;
+            width: 250px;
+        }
+    }
+
+    .hero-section {
+        position: relative;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        background: black;
+        overflow: hidden;
+
+        .animated-bg {
+            background: #3F5EFB;
+            background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(0, 0, 0, 1) 75%);
+            position: absolute;
+            background-size: 100% 100%;
+            background-position: center;
+            top: 100px;
+            right: 100px;
+            width: 55vw;
+            height: 55vw;
+            border-radius: 100%;
+
+            @include transition(all ease-out 0.6s);
+
+            opacity: 0;
+            animation: fade-in 2s ease-out 1s forwards;
+
+            @media #{$phone} {
+                width: 140%;
+                height: 140%;
+                top: -20%;
+                left: -20%;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+            }
+        }
+
+        .hero-caption {
+            left: 0;
+            width: 100%;
+            text-align: left;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            color: white;
+            height: 100vh;
+            justify-content: space-between;
+            padding: 50px $gutter;
+
+            @media #{$phone} {
+                padding: $gutterMobile;
+            }
+
+            .line {
+                width: 100%;
+                opacity: 0;
+
+                $line-count: 10;
+
+                // how many .line elements max
+                $base-duration: 0.9s;
+                $duration-step: 0.2s;
+                $base-delay: 0.3s;
+                $delay-step: 0.1s;
+
+                @for $i from 1 through $line-count {
+                    &:nth-child(#{$i}) {
+                        $duration: $base-duration + ($i - 1) * $duration-step;
+                        $delay: $base-delay + ($i - 1) * $delay-step;
+
+                        animation: fade-up $duration ease-out $delay forwards;
+                    }
+                }
+
+                h1 {
+                    font-weight: normal;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    font-size: 150px;
+                    margin: 0;
+                    color: white;
+                    line-height: 1;
+
+                    @media #{$phone} {
+                        font-size: 50px;
+                    }
+                }
+            }
+
+            .hero-short {
+                max-width: $maxPWidth;
+                opacity: 0;
+                animation: fade-up .9s ease-out 1.5s forwards;
+                margin-top: $gutter;
+
+                h2 {
+                    font-weight: normal;
+                }
+
+                .discover.button {
+                    margin-top: 50px;
+
+                    &:hover {
+                        background: $orange;
+                        color: black;
+                    }
+                }
+            }
+        }
+    }
+
+    .homepage-block {
+        position: relative;
+        padding: 100px $gutter;
+
+        @media #{$phone} {
+            padding: 100px $gutterMobile;
+        }
+
+        &.homepage-video-container {
+            width: 100%;
+            position: relative;
+            background: #F0EFED;
+            color: black;
+
+            @include transition(all ease-out 0.6s);
+
+            &.video-active {
+                background: $orange;
+            }
+
+            &.in-view {
+                .homepage-block-inner {
+                    .block-title {
+                        animation: fade-up .9s ease-out .3s forwards;
+                    }
+
+                    .block-text {
+                        animation: fade-up 1.2s ease-out .5s forwards;
+                    }
+                }
+            }
+
+            .homepage-block-inner {
+                width: 100%;
+                position: relative;
+                max-width: $maxContentWidth;
+                margin: 0 auto;
+                display: flex;
+                flex-wrap: wrap;
+
+                .block-title {
+                    width: 50%;
+
+                    @include transition(all ease-out 0.6s);
+
+                    opacity: 0;
+                    padding-right: $gutter;
+
+                    @media #{$phone} {
+                        padding-right: 0;
+                        width: 100%;
+                    }
+                }
+
+                .block-text {
+                    width: 50%;
+
+                    @include transition(all ease-out 0.6s);
+
+                    opacity: 0;
+                    padding-left: $gutter;
+
+                    @media #{$phone} {
+                        padding-left: 0;
+                        width: 100%;
+                    }
+                }
+            }
+
+            .video-container {
+                position: relative;
+                width: 100%;
+                margin: 100px auto;
+                padding-top: 56.25%;
+                height: 0;
+
+                @media #{$phone} {
+                    margin: 50px auto;
+                }
+
+                iframe, video {
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    top: 0;
+                    left: 0;
+                }
+            }
+        }
+
+        &.homepage-metric-container {
+            background: $beige;
+
+            &.in-view {
+                .homepage-block-inner {
+                    .metric-info {
+                        animation: fade-up .9s ease-out .3s forwards;
+                    }
+
+                    .metric-graphic {
+                        height: 100%;
+                    }
+                }
+            }
+
+            .homepage-block-inner {
+                .metric-item {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    position: relative;
+                    margin-bottom: 100px;
+
+                    @media #{$desktop} {
+                        &:nth-child(2n+1) {
+                            .number {
+                                order: 2;
+                            }
+
+                            .metric-info {
+                                order: 1;
+                            }
+
+                            .metric-graphic {
+                                right: -20px;
+                                left: auto;
+                            }
+                        }
+
+                        &:nth-child(2n+2) {
+                            .number {
+                                order: 1;
+                            }
+
+                            .metric-info {
+                                order: 2;
+                            }
+
+                            .metric-graphic {
+                                left: -20px;
+                                right: auto;
+                            }
+                        }
+                    }
+                }
+
+                .metric-graphic {
+                    background: $orange;
+                    width: 5px;
+                    height: 10%;
+                    position: absolute;
+                    bottom: 0;
+
+                    @include transition(all ease-out 2s);
+
+                    left: -20px;
+
+                    @media #{$phone} {
+                        left: 0;
+                    }
+
+                    svg {
+                        width: 30px;
+                        position: absolute;
+                        left: -13px;
+                        top: -15px;
+                        fill: $orange;
+
+                        @include transform(rotate(180deg));
+                    }
+                }
+
+                .number {
+                    width: 50%;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: flex-start;
+
+                    @media #{$phone} {
+                        padding-right: 0;
+                        order: 1;
+                        width: 100%;
+                    }
+
+                    .count-up {
+                        font-size: 300px;
+                        line-height: 1;
+                        font-weight: 600;
+                        padding-left: $gutter;
+
+                        @media #{$phone} {
+                            font-size: 200px;
+                        }
+                    }
+
+                    .percent {
+                        font-weight: bold;
+                        font-size: 30px;
+                        color: $orange;
+                    }
+                }
+
+                .metric-info {
+                    width: 50%;
+                    opacity: 0;
+
+                    @media #{$phone} {
+                        width: 100%;
+                        order: 2;
+                        padding-left: $gutter;
+                    }
+
+                    .block-title {
+                        margin-bottom: $gutter;
+                    }
+                }
+            }
+        }
+
+        &.homepage-problemsolving-container {
+            background: $blue;
+            color: white;
+            background: #020024;
+            background: linear-gradient(90deg, rgba(2, 0, 36, 1) 10%, rgba(0, 34, 255, 1) 23%, rgba(255, 255, 255, 1) 42%, rgba(255, 255, 255, 1) 55%, rgba(0, 34, 255, 1) 84%, rgba(2, 0, 36, 1) 100%);
+
+            @include transition(all ease-out 0.6s);
+
+            background-size: 200% 200%;
+            background-position: 0% 50%;
+
+            .button-container {
+                justify-content: center;
+            }
+
+            @media #{$phone} {
+                background-size: 300% 200%;
+            }
+
+            &.in-view {
+                .problem {
+                    .block-title {
+                        animation: fade-up .6s ease-out .4s forwards;
+                    }
+
+                    .block-text {
+                        animation: fade-up .9s ease-out .9s forwards;
+                    }
+                }
+            }
+
+            &.answered {
+                background-position: 100% 0%;
+
+                @media #{$phone} {
+                    .homepage-block-inner {
+                        .flex-container {
+                            .answer {
+                                @include filter(blur(0px));
+                            }
+                        }
+                    }
+                }
+
+                @media #{$desktop} {
+                    .homepage-block-inner {
+                        .flex-container {
+                            .problem {
+                                @include transform(translateX(-50%));
+
+                                opacity: 0;
+
+                                .button {
+                                    background: $orange;
+                                }
+                            }
+
+                            .answer {
+                                @include transform(translateX(-50%));
+
+                                opacity: 1;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .homepage-block-inner {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+                overflow: hidden;
+
+                .flex-container {
+                    width: 100%;
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    .problem {
+                        width: 50%;
+                        padding: $gutter;
+
+                        @include transform(translateX(50%));
+                        @include transition(all ease-out 0.6s);
+
+                        .block-title {
+                            margin-bottom: $gutter;
+                            opacity: 0;
+                        }
+
+                        .block-text {
+                            opacity: 0;
+                        }
+
+                        @media #{$phone} {
+                            width: 100%;
+
+                            @include transform(translateX(0%));
+                        }
+                    }
+
+                    .answer {
+                        width: 50%;
+                        padding: $gutter;
+                        position: relative;
+
+                        @include transform(translateX(50%));
+
+                        opacity: 0;
+
+                        @include transition(all ease-out 0.6s);
+
+                        @media #{$phone} {
+                            width: 100%;
+                            opacity: 1;
+
+                            @include filter(blur(10px));
+
+                            @include transform(translateX(0%));
+                        }
+
+                        .block-title {
+                            margin-bottom: $gutter;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.homepage-milestones-container {
+            padding-bottom: 0;
+
+            .homepage-block-inner {
+                .milestones-track {
+                    border-bottom: solid 0px black;
+                    border-top: solid 5px black;
+                    margin-top: 100px;
+
+                    @media #{$phone} {
+                        border-top: solid 5px black;
+                        border-bottom: solid 5px black;
+                        margin-bottom: 100px;
+                    }
+                }
+
+                .milestone {
+                    position: sticky;
+                    top: 0;
+                    padding: 0px $gutter;
+                    margin-bottom: 0px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    height: 90vh;
+                    background: white;
+
+                    @media #{$phone} {
+                        padding: 0 $gutterMobile;
+                        border-left: solid 5px black;
+                        border-right: solid 5px black;
+                        border-top: solid 5px black;
+                    }
+
+                    .date {
+                        width: 20%;
+                        padding-right: $gutter;
+                        border-right: solid 5px black;
+                        padding-top: $headerHeight;
+
+                        @media #{$phone} {
+                            width: 100%;
+                            padding-left: 0;
+                            border-right: solid 0px black;
+                        }
+                    }
+
+                    .milestone-info {
+                        width: 80%;
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: flex-start;
+
+                        @media #{$phone} {
+                            width: 100%;
+                            padding: 0;
+                        }
+
+                        .block-title {
+                            width: calc(50%);
+                            padding-left: $gutter;
+                            padding-top: $headerHeight;
+
+                            @media #{$phone} {
+                                width: 100%;
+                                padding: 0;
+                            }
+                        }
+
+                        .block-text {
+                            width: 50%;
+                            padding-left: 100px;
+                            padding-top: $headerHeight;
+
+                            @media #{$phone} {
+                                width: 100%;
+                                padding: 0;
+
+                                .inner {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+
+                    $milestone-count: 5;
+
+                    @for $i from 1 through $milestone-count {
+                        &:nth-child(#{$i}) {
+                            z-index: $i;
+
+                            // later milestones get higher z-index
+                       
+                        }
+                    }
+                }
+            }
+        }
+
+        &.homepage-testimonial {
+            background: $blue;
+            color: white;
+
+            .image-container {
+                position: absolute;
+                width: 40%;
+                right: 0;
+                top: 0;
+                opacity: 0.6;
+                z-index: 1;
+
+                @media #{$phone} {
+                    width: 100%;
+                    top: 10%;
+                    opacity: 0.5;
+                }
+
+                img {
+                    width: 100%;
+                    object-fit: contain;
+                }
+            }
+
+            .homepage-block-inner {
+                padding: 100px;
+
+                @media #{$phone} {
+                    padding: $gutterMobile;
+                }
+
+                .testimonial-text {
+                    width: 70%;
+                    max-width: $maxContentWidth;
+
+                    @media #{$phone} {
+                        padding: 0;
+                        width: 100%;
+                    }
+                }
+            }
+
+            .testimonial-container {
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: column;
+                margin: 50px auto;
+                position: relative;
+
+                .testimonial-text {
+                    font-family: "Garamond";
+                    font-size: 40px;
+                    margin-bottom: $gutter;
+                    position: relative;
+                    z-index: 10;
+
+                    @media #{$phone} {
+                        padding: 0;
+                        font-size: 30px;
+                    }
+                }
+
+                .name {
+                    font-size: $smallsize;
+                    text-transform: uppercase;
+                    order: 2;
+
+                    &:before {
+                        content: "-";
+                        margin-right: 5px;
+                    }
+
+                    &:after {
+                        content: "-";
+                        margin-left: 5px;
+                    }
+                }
+            }
+        }
+
+        &.homepage-casestudies {
+            .block-title {
+                margin-bottom: 50px;
+                text-align: center;
+            }
+
+            &.in-view {
+                .homepage-block-inner {
+                    .case-study {
+                        $line-count: 10;
+
+                        // how many .line elements max
+                        $base-duration: 0.9s;
+                        $duration-step: 0.2s;
+                        $base-delay: 0.3s;
+                        $delay-step: 0.1s;
+
+                        @for $i from 1 through $line-count {
+                            &:nth-child(#{$i}) {
+                                $duration: $base-duration + ($i - 1) * $duration-step;
+                                $delay: $base-delay + ($i - 1) * $delay-step;
+
+                                animation: fade-up $duration ease-out $delay forwards;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .homepage-block-inner {
+                max-width: $maxContentWidth;
+                margin: 100px auto;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+
+                .case-study {
+                    width: 40%;
+                    border-radius: 20px;
+                    background: $blue;
+                    color: white;
+                    overflow: hidden;
+                    position: relative;
+                    margin: 0 $gutter;
+                    opacity: 0;
+
+                    @media #{$phone} {
+                        padding: 0;
+                        width: 100%;
+                        margin-bottom: $gutter;
+                    }
+
+                    &:hover {
+                        .image-container {
+                            opacity: 0.2;
+                        }
+
+                        .info {
+                            animation: fade-up .6s ease-out forwards;
+                        }
+                    }
+
+                    .image-container {
+                        position: relative;
+                        width: 100%;
+                        z-index: 1;
+                        padding-top: 170%;
+                        height: 0;
+
+                        @include transition(all ease-out 0.6s);
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            display: block;
+                        }
+                    }
+
+                    .info {
+                        position: absolute;
+                        bottom: 0;
+                        left: 0;
+                        z-index: 1;
+                        width: 100%;
+                        opacity: 0;
+                        padding: $gutter;
+
+                        @include transition(all ease-out 0.6s);
+
+                        .title {
+                            font-family: "SilkSerif-LightItalic";
+                            font-size: 30px;
+                            margin-bottom: 30px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.maxwidth {
+    max-width: $maxContentWidth;
+    margin: 0 auto;
+    position: relative;
+}
+
+h1 {
+    font-family: 'Poppins-Bold';
+    font-weight: normal;
+}
+
+h2 {
+    font-family: 'Poppins-Bold';
+    font-weight: normal;
+    text-transform: uppercase;
+    font-size: 80px;
+    margin: 0;
+    line-height: 1;
+
+    @media #{$phone} {
+        font-size: 40px;
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes height-up {
+    from {
+        height: 10%;
+    }
+
+    to {
+        height: 100%;
+    }
+}
+
+@keyframes fade-up {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes heroGradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
