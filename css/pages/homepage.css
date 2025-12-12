@@ -154,10 +154,10 @@ body .hero-section .animated-bg {
   position: absolute;
   background-size: 100% 100%;
   background-position: center;
-  top: 100px;
+  top: 0px;
   right: 100px;
-  width: 55vw;
-  height: 55vw;
+  width: 60vw;
+  height: 60vw;
   border-radius: 100%;
   -webkit-transition: all ease-out 0.6s;
   -moz-transition: all ease-out 0.6s;
