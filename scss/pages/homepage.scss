@@ -186,7 +186,7 @@ body {
         overflow: hidden;
         background: black;
         overflow: hidden;
-        padding: $headerHeight $gutter;
+        padding: $headerHeight $gutter $gutter;
 
         .animated-bg {
             background: #3F5EFB;
@@ -237,7 +237,7 @@ body {
             color: white;
             height: 100%;
             justify-content: space-between;
-            padding: 50px $gutter;
+            padding: 0px $gutter;
 
             @media #{$phone} {
                 padding: $gutterMobile;

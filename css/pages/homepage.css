@@ -145,7 +145,7 @@ body .hero-section {
   overflow: hidden;
   background: black;
   overflow: hidden;
-  padding: 100px 30px;
+  padding: 100px 30px 30px;
 }
 /* line 191, ../../scss/pages/homepage.scss */
 body .hero-section .animated-bg {
@@ -203,7 +203,7 @@ body .hero-section .hero-caption {
   color: white;
   height: 100%;
   justify-content: space-between;
-  padding: 50px 30px;
+  padding: 0px 30px;
 }
 @media (max-width: 767px) {
   /* line 229, ../../scss/pages/homepage.scss */
