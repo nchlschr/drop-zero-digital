@@ -98,6 +98,10 @@ body {
         font-size: 15px;
     }
 
+    @media #{$tablet} {
+        font-size: 15px;
+    }
+
     * {
         box-sizing: border-box;
     }
@@ -111,7 +115,7 @@ body {
     }
 
     .phone-only {
-        @media #{$desktop} {
+        @media #{$desktop}, #{$tablet} {
             display: none;
         }
     }
@@ -182,6 +186,7 @@ body {
         overflow: hidden;
         background: black;
         overflow: hidden;
+        padding: $headerHeight $gutter;
 
         .animated-bg {
             background: #3F5EFB;
@@ -209,6 +214,16 @@ body {
                 bottom: 0;
                 margin: auto;
             }
+
+            @media #{$tablet} {
+                width: 140%;
+                height: 140%;
+                top: -20%;
+                left: -20%;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+            }
         }
 
         .hero-caption {
@@ -220,7 +235,7 @@ body {
             flex-direction: column;
             align-items: flex-start;
             color: white;
-            height: 100vh;
+            height: 100%;
             justify-content: space-between;
             padding: 50px $gutter;
 
@@ -261,6 +276,10 @@ body {
                     @media #{$phone} {
                         font-size: 50px;
                     }
+
+                    @media #{$tablet} {
+                        font-size: 100px;
+                    }
                 }
             }
 
@@ -289,6 +308,10 @@ body {
     .homepage-block {
         position: relative;
         padding: 100px $gutter;
+
+        @media #{$tablet} {
+            padding: $gutter;
+        }
 
         @media #{$phone} {
             padding: 100px $gutterMobile;
@@ -443,6 +466,10 @@ body {
 
                     left: -20px;
 
+                    @media #{$tablet} {
+                        left: 0;
+                    }
+
                     @media #{$phone} {
                         left: 0;
                     }
@@ -477,6 +504,10 @@ body {
                         padding-left: $gutter;
 
                         @media #{$phone} {
+                            font-size: 200px;
+                        }
+
+                        @media #{$tablet} {
                             font-size: 200px;
                         }
                     }
@@ -515,6 +546,10 @@ body {
 
             background-size: 200% 200%;
             background-position: 0% 50%;
+
+            @media #{$tablet} {
+                padding: 100px 0;
+            }
 
             .button-container {
                 justify-content: center;
@@ -584,6 +619,7 @@ body {
                     width: 100%;
                     display: flex;
                     flex-wrap: wrap;
+                    align-items: flex-start;
 
                     .problem {
                         width: 50%;
@@ -599,6 +635,10 @@ body {
 
                         .block-text {
                             opacity: 0;
+                        }
+
+                        @media #{$tablet} {
+                            padding: 0;
                         }
 
                         @media #{$phone} {
@@ -618,6 +658,10 @@ body {
                         opacity: 0;
 
                         @include transition(all ease-out 0.6s);
+
+                        @media #{$tablet} {
+                            padding: 0;
+                        }
 
                         @media #{$phone} {
                             width: 100%;
@@ -662,6 +706,10 @@ body {
                     height: 90vh;
                     background: white;
 
+                    @media #{$tablet} {
+                        height: auto;
+                    }
+
                     @media #{$phone} {
                         padding: 0 $gutterMobile;
                         border-left: solid 5px black;
@@ -687,6 +735,7 @@ body {
                         display: flex;
                         flex-wrap: wrap;
                         justify-content: flex-start;
+                        align-content: flex-start;
 
                         @media #{$phone} {
                             width: 100%;
@@ -698,6 +747,15 @@ body {
                             padding-left: $gutter;
                             padding-top: $headerHeight;
 
+                            @media #{$tablet} {
+                                width: 100%;
+                                margin-bottom: $gutter;
+
+                                h2 {
+                                    margin: 0;
+                                }
+                            }
+
                             @media #{$phone} {
                                 width: 100%;
                                 padding: 0;
@@ -708,6 +766,12 @@ body {
                             width: 50%;
                             padding-left: 100px;
                             padding-top: $headerHeight;
+
+                            @media #{$tablet} {
+                                width: 100%;
+                                padding-top: $gutter;
+                                padding-left: $gutter;
+                            }
 
                             @media #{$phone} {
                                 width: 100%;
@@ -746,6 +810,11 @@ body {
                 opacity: 0.6;
                 z-index: 1;
 
+                @media #{$tablet} {
+                    width: 60%;
+                    top: 10%;
+                }
+
                 @media #{$phone} {
                     width: 100%;
                     top: 10%;
@@ -761,6 +830,10 @@ body {
             .homepage-block-inner {
                 padding: 100px;
 
+                @media #{$tablet} {
+                    padding: $gutter;
+                }
+
                 @media #{$phone} {
                     padding: $gutterMobile;
                 }
@@ -768,6 +841,10 @@ body {
                 .testimonial-text {
                     width: 70%;
                     max-width: $maxContentWidth;
+
+                    @media #{$tablet} {
+                        width: 100%;
+                    }
 
                     @media #{$phone} {
                         padding: 0;
@@ -940,6 +1017,10 @@ h2 {
     line-height: 1;
 
     @media #{$phone} {
+        font-size: 40px;
+    }
+
+    @media #{$tablet} {
         font-size: 40px;
     }
 }
